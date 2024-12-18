@@ -13,7 +13,7 @@ public class CubeSpawner : MonoBehaviour
     [SerializeField] private LayerMask despawnLayer;
     private GameObject tempCube;
     private float cubeSize = 0.5f;
-    private float range = 5f;
+    private float cubeRange = 5f;
 
     private void Awake()
     {
@@ -44,21 +44,21 @@ public class CubeSpawner : MonoBehaviour
             SpawnCube();
         }
 
-        // Increase the range
+        // Increase the cubeRange
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (range < 10f)
+            if (cubeRange < 10f)
             {
-                range += 0.3f;
+                cubeRange += 0.1f;
             }
         }
 
-        // Decrease the range
+        // Decrease the cubeRange
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            if (range > 2f)
+            if (cubeRange > 2f)
             {
-                range -= 0.3f;
+                cubeRange -= 0.3f;
             }
         }
 
@@ -66,11 +66,15 @@ public class CubeSpawner : MonoBehaviour
         {
             DespawnCube();
         }
+
+        tempCube.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
+        tempCube.transform.position = Camera.main.transform.position + Camera.main.transform.forward * cubeRange;
+        tempCube.transform.rotation = Camera.main.transform.rotation;
     }
 
     private void SpawnCube()
     {
-        spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * range,
+        spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * cubeRange,
                       Camera.main.transform.rotation, new Vector3(cubeSize, cubeSize, cubeSize));
         cubeSize = 0.5f;
     }
@@ -91,6 +95,6 @@ public class CubeSpawner : MonoBehaviour
 
     public float GetRange()
     {
-        return range;
+        return cubeRange;
     }
 }
