@@ -788,6 +788,8 @@ MonoBehaviour:
   despawnLayer:
     serializedVersion: 2
     m_Bits: 128
+  tempCubeInstantiate: {fileID: 5349854866539780130, guid: a56110418a2782344b33e923da6341ed,
+    type: 3}
 --- !u!114 &7305634331924438427
 MonoBehaviour:
   m_ObjectHideFlags: 0

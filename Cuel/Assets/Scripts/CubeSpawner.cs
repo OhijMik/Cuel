@@ -11,7 +11,10 @@ public class CubeSpawner : MonoBehaviour
 
     [SerializeField] private int indexToSpawn = 0;
     [SerializeField] private LayerMask despawnLayer;
-    private GameObject tempCube;
+    // private GameObject tempCube;
+    [SerializeField] private Transform tempCubeInstantiate;
+    private Transform tempCube;
+
     private float cubeSize = 0.5f;
     private float cubeRange = 5f;
 
@@ -19,7 +22,9 @@ public class CubeSpawner : MonoBehaviour
     {
         avatar = GetComponent<Alteruna.Avatar>();
         spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
-        tempCube = GameObject.FindGameObjectWithTag("TempCube");
+
+        //tempCube = GameObject.FindGameObjectWithTag("TempCube");
+        tempCube = Instantiate(tempCubeInstantiate, Camera.main.transform.position + Camera.main.transform.forward * cubeRange, Camera.main.transform.rotation);
     }
 
     private void Update()
