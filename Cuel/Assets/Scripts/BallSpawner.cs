@@ -69,8 +69,26 @@ public class BallSpawner : ShapeSpawner
 
     private void SpawnBall()
     {
-        spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * ballRange,
-                      Camera.main.transform.rotation, new Vector3(ballSize, ballSize, ballSize));
+        // Spawn the ball at range or at a solid object
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit,
+            Mathf.Infinity))
+        {
+            if (hit.distance < ballRange)
+            {
+                spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * hit.distance * 0.9f,
+                            Camera.main.transform.rotation, new Vector3(ballSize, ballSize, ballSize));
+            }
+            else
+            {
+                spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * ballRange,
+                            Camera.main.transform.rotation, new Vector3(ballSize, ballSize, ballSize));
+            }
+        }
+        else
+        {
+            spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * ballRange,
+                            Camera.main.transform.rotation, new Vector3(ballSize, ballSize, ballSize));
+        }
         ballSize = 0.5f;
     }
 
