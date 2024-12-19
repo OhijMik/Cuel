@@ -16959,6 +16959,7 @@ MonoBehaviour:
   Multiplayer: {fileID: 1359648888}
   SpawnableObjects:
   - {fileID: 6030640640370523054, guid: 3017e3e6cc85a7a498a20438c12fd1f4, type: 3}
+  - {fileID: 8874350984367639388, guid: 11b38ece5f542ba43abcfaa7b2d6580e, type: 3}
   OnObjectSpawn:
     m_PersistentCalls:
       m_Calls: []

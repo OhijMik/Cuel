@@ -746,7 +746,7 @@ MonoBehaviour:
   jumpSpeed: 8
   gravity: 20
   lookSpeed: 2
-  lookXLimit: 45
+  lookXLimit: 90
   canMove: 1
   cameraYOffset: 0.4
 --- !u!136 &2768931171735297590
@@ -798,9 +798,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48aae819effd08458411966d9eb45db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempCubeInstantiate: {fileID: 5349854866539780130, guid: a56110418a2782344b33e923da6341ed,
+  tempCubeInstantiate: {fileID: 1254633942429340224, guid: a56110418a2782344b33e923da6341ed,
     type: 3}
-  tempBallInstantiate: {fileID: 4043965540025957583, guid: 6e9dd1f5369924b4c8ca9f8f93404dd0,
+  tempBallInstantiate: {fileID: 3754111100955974471, guid: 6e9dd1f5369924b4c8ca9f8f93404dd0,
     type: 3}
 --- !u!1 &7425648468864164688
 GameObject:

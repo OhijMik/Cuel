@@ -69,8 +69,26 @@ public class CubeSpawner : ShapeSpawner
 
     private void SpawnCube()
     {
-        spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * cubeRange,
-                      Camera.main.transform.rotation, new Vector3(cubeSize, cubeSize, cubeSize));
+        // Spawn the cube at range or at a solid object
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit,
+            Mathf.Infinity))
+        {
+            if (hit.distance < cubeRange)
+            {
+                spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * hit.distance * 0.9f,
+                            Camera.main.transform.rotation, new Vector3(cubeSize, cubeSize, cubeSize));
+            }
+            else
+            {
+                spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * cubeRange,
+                            Camera.main.transform.rotation, new Vector3(cubeSize, cubeSize, cubeSize));
+            }
+        }
+        else
+        {
+            spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * cubeRange,
+                            Camera.main.transform.rotation, new Vector3(cubeSize, cubeSize, cubeSize));
+        }
         cubeSize = 0.5f;
     }
 
