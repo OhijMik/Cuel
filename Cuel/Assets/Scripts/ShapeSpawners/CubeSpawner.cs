@@ -26,7 +26,7 @@ public class CubeSpawner : ShapeSpawner
         this.spawner = spawner;
     }
 
-    public void UpdateSpawner()
+    public void UpdateSpawner(GameObject tempShape)
     {
         if (!avatar.IsMe)
         {
@@ -65,6 +65,11 @@ public class CubeSpawner : ShapeSpawner
                 cubeRange -= cubeRangeIncrement;
             }
         }
+
+        // Add the temp shape
+        tempShape.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
+        tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * cubeRange;
+        tempShape.transform.rotation = Camera.main.transform.rotation;
     }
 
     private void SpawnCube()

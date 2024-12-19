@@ -51,13 +51,7 @@ public class Player : MonoBehaviour
             currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
         }
 
-        currShapeSpawner.UpdateSpawner();
-
-        // Add the temp shape
-        tempShape.transform.localScale = new Vector3(currShapeSpawner.GetSize(), currShapeSpawner.GetSize(), currShapeSpawner.GetSize());
-        tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * currShapeSpawner.GetRange();
-        tempShape.transform.rotation = Camera.main.transform.rotation;
-        tempShape.transform.eulerAngles = new Vector3(tempShape.transform.eulerAngles.x + 90, tempShape.transform.eulerAngles.y + 180, tempShape.transform.eulerAngles.z);
+        currShapeSpawner.UpdateSpawner(tempShape);
     }
 
     public ShapeSpawner GetSpawner()

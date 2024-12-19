@@ -26,7 +26,7 @@ public class WallSpawner : ShapeSpawner
         this.spawner = spawner;
     }
 
-    public void UpdateSpawner()
+    public void UpdateSpawner(GameObject tempShape)
     {
         if (!avatar.IsMe)
         {
@@ -65,6 +65,12 @@ public class WallSpawner : ShapeSpawner
                 wallRange -= wallRangeIncrement;
             }
         }
+
+        // Add the temp shape
+        tempShape.transform.localScale = new Vector3(wallSize, wallSize, wallSize);
+        tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * wallRange;
+        tempShape.transform.rotation = Camera.main.transform.rotation;
+        tempShape.transform.eulerAngles = new Vector3(tempShape.transform.eulerAngles.x, tempShape.transform.eulerAngles.y, tempShape.transform.eulerAngles.z);
     }
 
     private void SpawnWall()
