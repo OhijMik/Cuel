@@ -9,13 +9,9 @@ public class UI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rangeText;
     private ShapeSpawner shapeSpawner;
 
-    private void Start()
-    {
-        shapeSpawner = GetComponent<Player>().GetSpawner();
-    }
-
     private void Update()
     {
+        shapeSpawner = GetComponent<Player>().GetSpawner();
         sizeText.text = ((int)(shapeSpawner.GetSize() * 10)).ToString();
         rangeText.text = ((int)shapeSpawner.GetRange()).ToString() + "m";
     }
