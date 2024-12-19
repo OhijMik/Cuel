@@ -8,11 +8,12 @@ public class Player : MonoBehaviour
 {
     private Alteruna.Avatar avatar;
     private Spawner spawner;
-    private int currShape;  // 0: cube, 1: sphere, 2: triangle
+    private int currShape;  // 0: cube, 1: sphere, 2: wall
     private ShapeSpawner currShapeSpawner;
 
     [SerializeField] private GameObject tempCubeInstantiate;
     [SerializeField] private GameObject tempBallInstantiate;
+    [SerializeField] private GameObject tempWallInstantiate;
     private GameObject tempShape;
 
     private void Awake()
@@ -42,6 +43,13 @@ public class Player : MonoBehaviour
             tempShape = Instantiate(tempBallInstantiate, Camera.main.transform.position, Camera.main.transform.rotation);
             currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Destroy(tempShape);
+            currShape = 2;
+            tempShape = Instantiate(tempWallInstantiate, Camera.main.transform.position, Camera.main.transform.rotation);
+            currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
+        }
 
         currShapeSpawner.UpdateSpawner();
 
@@ -49,6 +57,7 @@ public class Player : MonoBehaviour
         tempShape.transform.localScale = new Vector3(currShapeSpawner.GetSize(), currShapeSpawner.GetSize(), currShapeSpawner.GetSize());
         tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * currShapeSpawner.GetRange();
         tempShape.transform.rotation = Camera.main.transform.rotation;
+        tempShape.transform.eulerAngles = new Vector3(tempShape.transform.eulerAngles.x + 90, tempShape.transform.eulerAngles.y + 180, tempShape.transform.eulerAngles.z);
     }
 
     public ShapeSpawner GetSpawner()

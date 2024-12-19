@@ -802,6 +802,8 @@ MonoBehaviour:
     type: 3}
   tempBallInstantiate: {fileID: 3754111100955974471, guid: 6e9dd1f5369924b4c8ca9f8f93404dd0,
     type: 3}
+  tempWallInstantiate: {fileID: 2138108698557384975, guid: a26375520981c81499d6e8f51745d3e8,
+    type: 3}
 --- !u!1 &7425648468864164688
 GameObject:
   m_ObjectHideFlags: 0

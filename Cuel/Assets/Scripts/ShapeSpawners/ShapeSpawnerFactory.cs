@@ -15,6 +15,10 @@ public class ShapeSpawnerFactory
         {
             return new BallSpawner(avatar, spawner);
         }
+        else if (shapeIndex == 2)
+        {
+            return new WallSpawner(avatar, spawner);
+        }
         return null;
     }
 }
