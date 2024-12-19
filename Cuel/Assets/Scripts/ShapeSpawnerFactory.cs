@@ -13,7 +13,7 @@ public class ShapeSpawnerFactory
         }
         else if (shapeIndex == 1)
         {
-            return new CubeSpawner(avatar, spawner);
+            return new BallSpawner(avatar, spawner);
         }
         return null;
     }

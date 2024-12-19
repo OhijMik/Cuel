@@ -800,6 +800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tempCubeInstantiate: {fileID: 5349854866539780130, guid: a56110418a2782344b33e923da6341ed,
     type: 3}
+  tempBallInstantiate: {fileID: 4043965540025957583, guid: 6e9dd1f5369924b4c8ca9f8f93404dd0,
+    type: 3}
 --- !u!1 &7425648468864164688
 GameObject:
   m_ObjectHideFlags: 0

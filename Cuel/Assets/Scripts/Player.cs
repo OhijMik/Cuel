@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private ShapeSpawner currShapeSpawner;
 
     [SerializeField] private Transform tempCubeInstantiate;
-    [SerializeField] private Transform tempSphereInstantiate;
+    [SerializeField] private Transform tempBallInstantiate;
     private Transform tempShape;
 
     private void Awake()
@@ -26,6 +26,20 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        // Change the current shape spawner
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            currShape = 0;
+            tempShape = Instantiate(tempCubeInstantiate, Camera.main.transform.position, Camera.main.transform.rotation);
+            currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currShape = 1;
+            tempShape = Instantiate(tempBallInstantiate, Camera.main.transform.position, Camera.main.transform.rotation);
+            currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
+        }
+
         currShapeSpawner.UpdateSpawner();
 
         // Add the temp shape

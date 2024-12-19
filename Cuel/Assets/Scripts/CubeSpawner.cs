@@ -9,10 +9,16 @@ public class CubeSpawner : ShapeSpawner
     private Alteruna.Avatar avatar;
     private Spawner spawner;
     private int indexToSpawn = 0;
-    private Transform tempCube;
 
     private float cubeSize = 0.5f;
+    private float cubeSizeMax = 10f;
+    private float cubeSizeIncrement = 0.05f;
+
     private float cubeRange = 5f;
+    private float cubeRangeMax = 10f;
+    private float cubeRangeMin = 1f;
+    private float cubeRangeIncrement = 1f;
+
 
     public CubeSpawner(Alteruna.Avatar avatar, Spawner spawner)
     {
@@ -28,35 +34,35 @@ public class CubeSpawner : ShapeSpawner
         }
 
         // Scale the cube size
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (cubeSize < 10f)
+            if (cubeSize < cubeSizeMax)
             {
-                cubeSize += 0.05f;
+                cubeSize += cubeSizeIncrement;
             }
         }
 
         // Spawn Cube
-        if (Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             SpawnCube();
         }
 
         // Increase the cubeRange
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)   // Forward
         {
-            if (cubeRange < 10f)
+            if (cubeRange < cubeRangeMax)
             {
-                cubeRange += 0.1f;
+                cubeRange += cubeRangeIncrement;
             }
         }
 
         // Decrease the cubeRange
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)    // Backward
         {
-            if (cubeRange > 2f)
+            if (cubeRange > cubeRangeMin)
             {
-                cubeRange -= 0.3f;
+                cubeRange -= cubeRangeIncrement;
             }
         }
     }
