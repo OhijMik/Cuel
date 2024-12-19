@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
             currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
         }
 
+        // Update the current spawner
         currShapeSpawner.UpdateSpawner(tempShape);
     }
 
