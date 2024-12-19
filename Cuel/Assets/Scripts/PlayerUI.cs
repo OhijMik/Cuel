@@ -7,16 +7,16 @@ public class UI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI sizeText;
     [SerializeField] private TextMeshProUGUI rangeText;
-    private CubeSpawner cubeSpawner;
+    private ShapeSpawner shapeSpawner;
 
     private void Start()
     {
-        cubeSpawner = GetComponent<CubeSpawner>();
+        shapeSpawner = GetComponent<Player>().GetSpawner();
     }
 
     private void Update()
     {
-        sizeText.text = ((int)(cubeSpawner.GetSize() * 10)).ToString();
-        rangeText.text = ((int)cubeSpawner.GetRange()).ToString() + "m";
+        sizeText.text = ((int)(shapeSpawner.GetSize() * 10)).ToString();
+        rangeText.text = ((int)shapeSpawner.GetRange()).ToString() + "m";
     }
 }

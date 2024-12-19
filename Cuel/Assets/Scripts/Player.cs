@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using Alteruna;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    private Alteruna.Avatar avatar;
+    private Spawner spawner;
+    private int currShape;  // 0: cube, 1: sphere, 2: triangle
+    private ShapeSpawner currShapeSpawner;
+
+    [SerializeField] private Transform tempCubeInstantiate;
+    [SerializeField] private Transform tempSphereInstantiate;
+    private Transform tempShape;
+
+    private void Awake()
+    {
+        avatar = GetComponent<Alteruna.Avatar>();
+        spawner = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<Spawner>();
+        currShape = 0;
+        tempShape = Instantiate(tempCubeInstantiate, Camera.main.transform.position, Camera.main.transform.rotation);
+        currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
+    }
+
+    private void Update()
+    {
+        currShapeSpawner.UpdateSpawner();
+
+        // Add the temp shape
+        tempShape.transform.localScale = new Vector3(currShapeSpawner.GetSize(), currShapeSpawner.GetSize(), currShapeSpawner.GetSize());
+        tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * currShapeSpawner.GetRange();
+        tempShape.transform.rotation = Camera.main.transform.rotation;
+    }
+
+    public ShapeSpawner GetSpawner()
+    {
+        return currShapeSpawner;
+    }
+}

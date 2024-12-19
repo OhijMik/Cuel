@@ -620,8 +620,8 @@ GameObject:
   - component: {fileID: 6313115854290995405}
   - component: {fileID: 8168308072511601557}
   - component: {fileID: 2768931171735297590}
-  - component: {fileID: 5266772582978655393}
   - component: {fileID: 7305634331924438427}
+  - component: {fileID: 6983244842046585292}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -772,24 +772,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5266772582978655393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6253392774826421230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4209749de84d04bb7651c35f4ebc4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indexToSpawn: 0
-  despawnLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  tempCubeInstantiate: {fileID: 5349854866539780130, guid: a56110418a2782344b33e923da6341ed,
-    type: 3}
 --- !u!114 &7305634331924438427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,6 +786,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeText: {fileID: 3801527498155757801}
   rangeText: {fileID: 1295429224933661541}
+--- !u!114 &6983244842046585292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6253392774826421230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48aae819effd08458411966d9eb45db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempCubeInstantiate: {fileID: 5349854866539780130, guid: a56110418a2782344b33e923da6341ed,
+    type: 3}
 --- !u!1 &7425648468864164688
 GameObject:
   m_ObjectHideFlags: 0
