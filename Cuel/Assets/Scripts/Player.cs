@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject tempCubeInstantiate;
     [SerializeField] private GameObject tempBallInstantiate;
     [SerializeField] private GameObject tempWallInstantiate;
+    [SerializeField] private GameObject tempTriangleInstantiate;
     private GameObject tempShape;
 
     private void Awake()
@@ -59,6 +60,13 @@ public class Player : MonoBehaviour
             Destroy(tempShape);
             currShape = 2;
             tempShape = Instantiate(tempWallInstantiate, Camera.main.transform.position, Camera.main.transform.rotation);
+            currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Destroy(tempShape);
+            currShape = 3;
+            tempShape = Instantiate(tempTriangleInstantiate, Camera.main.transform.position, Camera.main.transform.rotation);
             currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
         }
 

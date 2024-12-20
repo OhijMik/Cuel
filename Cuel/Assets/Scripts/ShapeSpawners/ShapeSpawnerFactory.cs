@@ -9,39 +9,51 @@ public class ShapeSpawnerFactory
     {
         if (shapeIndex == 0)            // Create cube spawner
         {
-            float cubeSize = 0.5f;
-            float cubeSizeMax = 10f;
-            float cubeSizeIncrement = 0.05f;
+            float size = 0.5f;
+            float sizeMax = 10f;
+            float sizeIncrement = 0.05f;
 
-            float cubeRange = 5f;
-            float cubeRangeMax = 10f;
-            float cubeRangeMin = 1f;
-            return new CubeSpawner(avatar, spawner, shapeIndex, cubeSize, cubeSizeMax, cubeSizeIncrement, cubeRange,
-                                    cubeRangeMax, cubeRangeMin);
+            float range = 5f;
+            float rangeMax = 10f;
+            float rangeMin = 1f;
+            return new WallSpawner(avatar, spawner, shapeIndex, size, sizeMax, sizeIncrement, range,
+                                    rangeMax, rangeMin);
         }
         else if (shapeIndex == 1)       // Create ball spawner
         {
-            float ballSize = 0.5f;
-            float ballSizeMax = 10f;
-            float ballSizeIncrement = 0.05f;
+            float size = 0.5f;
+            float sizeMax = 10f;
+            float sizeIncrement = 0.05f;
 
-            float ballRange = 5f;
-            float ballRangeMax = 25f;
-            float ballRangeMin = 1f;
-            return new BallSpawner(avatar, spawner, shapeIndex, ballSize, ballSizeMax, ballSizeIncrement, ballRange,
-                                    ballRangeMax, ballRangeMin);
+            float range = 5f;
+            float rangeMax = 25f;
+            float rangeMin = 1f;
+            return new WallSpawner(avatar, spawner, shapeIndex, size, sizeMax, sizeIncrement, range,
+                                    rangeMax, rangeMin);
         }
         else if (shapeIndex == 2)       // Create wall spawner
         {
-            float wallSize = 0.5f;
-            float wallSizeMax = 10f;
-            float wallSizeIncrement = 0.05f;
+            float size = 0.5f;
+            float sizeMax = 10f;
+            float sizeIncrement = 0.05f;
 
-            float wallRange = 2f;
-            float wallRangeMax = 3f;
-            float wallRangeMin = 1f;
-            return new WallSpawner(avatar, spawner, shapeIndex, wallSize, wallSizeMax, wallSizeIncrement, wallRange,
-                                    wallRangeMax, wallRangeMin);
+            float range = 2f;
+            float rangeMax = 3f;
+            float rangeMin = 1f;
+            return new WallSpawner(avatar, spawner, shapeIndex, size, sizeMax, sizeIncrement, range,
+                                    rangeMax, rangeMin);
+        }
+        else if (shapeIndex == 3)       // Create triangle spawner
+        {
+            float size = 0.5f;
+            float sizeMax = 10f;
+            float sizeIncrement = 0.05f;
+
+            float range = 5f;
+            float rangeMax = 10f;
+            float rangeMin = 1f;
+            return new WallSpawner(avatar, spawner, shapeIndex, size, sizeMax, sizeIncrement, range,
+                                    rangeMax, rangeMin);
         }
         return null;
     }
