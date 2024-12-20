@@ -42,7 +42,7 @@ public class ShapeSpawner
             return;
         }
 
-        // Scale the wall size
+        // Scale the shape size
         if (Input.GetKey(KeyCode.Mouse0))
         {
             if (size < sizeMax)
@@ -51,13 +51,13 @@ public class ShapeSpawner
             }
         }
 
-        // Spawn wall
+        // Spawn shape
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             SpawnShape();
         }
 
-        // Increase the wallRange
+        // Increase the range
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)   // Forward
         {
             if (range < rangeMax)
@@ -66,7 +66,7 @@ public class ShapeSpawner
             }
         }
 
-        // Decrease the wallRange
+        // Decrease the range
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)    // Backward
         {
             if (range > rangeMin)
@@ -80,6 +80,10 @@ public class ShapeSpawner
 
     private void UpdateTempShape(GameObject tempShape)
     {
+        if (!avatar.IsMe)
+        {
+            return;
+        }
         // Add the temp shape
         tempShape.transform.localScale = new Vector3(size, size, size);
         tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * range;
@@ -88,7 +92,12 @@ public class ShapeSpawner
 
     private void SpawnShape()
     {
-        // Spawn the wall at range or at a solid object
+        if (!avatar.IsMe)
+        {
+            return;
+        }
+
+        // Spawn the shape at range or at a solid object
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit,
             Mathf.Infinity))
         {

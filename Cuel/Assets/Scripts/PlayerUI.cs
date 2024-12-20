@@ -11,8 +11,16 @@ public class UI : MonoBehaviour
 
     private void Update()
     {
+        if (GetComponent<Player>().GetAvatar() == null || !GetComponent<Player>().GetAvatar().IsMe)
+        {
+            return;
+        }
         shapeSpawner = GetComponent<Player>().GetSpawner();
-        sizeText.text = ((int)(shapeSpawner.GetSize() * 10)).ToString();
-        rangeText.text = ((int)shapeSpawner.GetRange()).ToString() + "m";
+        if (shapeSpawner != null)
+        {
+            sizeText.text = ((int)(shapeSpawner.GetSize() * 10)).ToString();
+            rangeText.text = ((int)shapeSpawner.GetRange()).ToString() + "m";
+        }
+
     }
 }
