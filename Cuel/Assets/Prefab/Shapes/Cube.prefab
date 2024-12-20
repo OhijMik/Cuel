@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Multiplayer: {fileID: 0}
-  _uidString: 3e87b842-1242-4e77-a925-14e1b36e1763
+  _uidString: 029e9472-0a13-4942-a6af-1b7e1baf076e
   BucketBehaviors:
   - Name: Min
     NetLOD: 0
