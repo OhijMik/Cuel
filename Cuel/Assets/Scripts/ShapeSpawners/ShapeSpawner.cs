@@ -84,6 +84,20 @@ public class ShapeSpawner
         {
             return;
         }
+
+        // Spawn the temp shape at range or at a solid object
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit,
+            Mathf.Infinity))
+        {
+            if (hit.distance < range)
+            {
+                // Add the temp shape at the hit distance
+                tempShape.transform.localScale = new Vector3(size, size, size);
+                tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * hit.distance * 0.9f;
+                tempShape.transform.rotation = Camera.main.transform.rotation;
+                return;
+            }
+        }
         // Add the temp shape
         tempShape.transform.localScale = new Vector3(size, size, size);
         tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * range;
@@ -105,18 +119,13 @@ public class ShapeSpawner
             {
                 spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * hit.distance * 0.9f,
                             Camera.main.transform.rotation, new Vector3(size, size, size));
-            }
-            else
-            {
-                spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * range,
-                            Camera.main.transform.rotation, new Vector3(size, size, size));
+                size = defaultSize;
+                return;
             }
         }
-        else
-        {
-            spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * range,
-                            Camera.main.transform.rotation, new Vector3(size, size, size));
-        }
+        spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * range,
+                        Camera.main.transform.rotation, new Vector3(size, size, size));
+
         size = defaultSize;
     }
 
