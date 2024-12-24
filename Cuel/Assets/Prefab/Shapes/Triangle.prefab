@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 1856761615468117947}
   - component: {fileID: 360113390743874776}
   - component: {fileID: 4610442847067182829}
-  - component: {fileID: 2164327671363782712}
+  - component: {fileID: 4911603260425031820}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -508,7 +508,7 @@ MonoBehaviour:
   OnUnpossessed:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2164327671363782712
+--- !u!114 &4911603260425031820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

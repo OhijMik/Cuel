@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShapeMassUpdate : MonoBehaviour
+public class Shape : MonoBehaviour
 {
     private new Rigidbody rigidbody;
-    private void Awake()
+    private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.velocity = (transform.position - Camera.main.transform.position) * 2;
