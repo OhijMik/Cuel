@@ -8,6 +8,8 @@ public class ShapeMassUpdate : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        rigidbody.velocity = (transform.position - Camera.main.transform.position) * 2;
+        transform.position = Camera.main.transform.position;
     }
 
     private void Update()
