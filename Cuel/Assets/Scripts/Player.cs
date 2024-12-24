@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     private Alteruna.Avatar avatar;
     private Spawner spawner;
-    private int currShape = -1;  // 0: cube, 1: sphere, 2: wall
+    private int currShape = -1;  // 0: cube, 1: ball, 2: triangle
     private ShapeSpawner currShapeSpawner;
 
     [SerializeField] private GameObject tempCubeInstantiate;
@@ -59,13 +59,6 @@ public class Player : MonoBehaviour
         {
             Destroy(tempShape);
             currShape = 2;
-            tempShape = Instantiate(tempWallInstantiate, Camera.main.transform.position, Camera.main.transform.rotation);
-            currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Destroy(tempShape);
-            currShape = 3;
             tempShape = Instantiate(tempTriangleInstantiate, Camera.main.transform.position, Camera.main.transform.rotation);
             currShapeSpawner = ShapeSpawnerFactory.createShapeSpawner(currShape, avatar, spawner);
         }
