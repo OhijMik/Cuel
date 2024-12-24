@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject tempCubeInstantiate;
     [SerializeField] private GameObject tempBallInstantiate;
-    [SerializeField] private GameObject tempWallInstantiate;
     [SerializeField] private GameObject tempTriangleInstantiate;
     private GameObject tempShape;
 

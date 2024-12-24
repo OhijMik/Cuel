@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool canMove = true;
 
     [SerializeField] private float cameraYOffset = 0.4f;
-    [SerializeField] private float cameraZOffset = 2.5f;
     private Camera playerCamera;
 
     private Alteruna.Avatar _avatar;
@@ -33,8 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
         characterController = GetComponent<CharacterController>();
         playerCamera = Camera.main;
-        playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y + cameraYOffset, transform.position.z - cameraZOffset);
-        // playerCamera.transform.eulerAngles = new Vector3(20, 0, 0);
+        playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y + cameraYOffset, transform.position.z);
         playerCamera.transform.SetParent(transform);
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
