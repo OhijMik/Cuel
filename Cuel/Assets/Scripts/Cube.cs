@@ -10,7 +10,7 @@ public class Cube : MonoBehaviour
     void Start()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.position * 2 - Camera.main.transform.position;
+        rb.velocity = (transform.position - Camera.main.transform.position) * 2;
         transform.position = Camera.main.transform.position;
     }
 }
