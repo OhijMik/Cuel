@@ -15,13 +15,13 @@ public class ShapeSpawner
     private float sizeMax;
     private float sizeIncrement = 0.05f;
 
-    private float range;
-    private float rangeMax;
-    private float rangeMin;
-    private float rangeIncrement = 1f;
+    private float power;
+    private float powerMax;
+    private float powerMin;
+    private float powerIncrement = 1f;
 
     public ShapeSpawner(Alteruna.Avatar avatar, Spawner spawner, int indexToSpawn, float size, float sizeMax, float sizeIncrement,
-                        float range, float rangeMax, float rangeMin)
+                        float power, float powerMax, float powerMin)
     {
         this.avatar = avatar;
         this.spawner = spawner;
@@ -30,9 +30,9 @@ public class ShapeSpawner
         this.defaultSize = size;
         this.sizeMax = sizeMax;
         this.sizeIncrement = sizeIncrement;
-        this.range = range;
-        this.rangeMax = rangeMax;
-        this.rangeMin = rangeMin;
+        this.power = power;
+        this.powerMax = powerMax;
+        this.powerMin = powerMin;
     }
 
     public void UpdateSpawner(GameObject tempShape)
@@ -57,21 +57,21 @@ public class ShapeSpawner
             SpawnShape();
         }
 
-        // Increase the range
+        // Increase the power
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)   // Forward
         {
-            if (range < rangeMax)
+            if (power < powerMax)
             {
-                range += rangeIncrement;
+                power += powerIncrement;
             }
         }
 
-        // Decrease the range
+        // Decrease the power
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)    // Backward
         {
-            if (range > rangeMin)
+            if (power > powerMin)
             {
-                range -= rangeIncrement;
+                power -= powerIncrement;
             }
         }
 
@@ -85,11 +85,11 @@ public class ShapeSpawner
             return;
         }
 
-        // Spawn the temp shape at range or at a solid object
+        // Spawn the temp shape at power or at a solid object
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit,
             Mathf.Infinity))
         {
-            if (hit.distance < range)
+            if (hit.distance < power)
             {
                 // Add the temp shape at the hit distance
                 tempShape.transform.localScale = new Vector3(size, size, size);
@@ -100,7 +100,7 @@ public class ShapeSpawner
         }
         // Add the temp shape
         tempShape.transform.localScale = new Vector3(size, size, size);
-        tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * range;
+        tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * power;
         tempShape.transform.rotation = Camera.main.transform.rotation;
     }
 
@@ -111,19 +111,8 @@ public class ShapeSpawner
             return;
         }
 
-        // Spawn the shape at range or at a solid object
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit,
-            Mathf.Infinity))
-        {
-            if (hit.distance < range)
-            {
-                spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * hit.distance * 0.9f,
-                            Camera.main.transform.rotation, new Vector3(size, size, size));
-                size = defaultSize;
-                return;
-            }
-        }
-        spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * range,
+        // Spawn the shape with power
+        spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * power,
                         Camera.main.transform.rotation, new Vector3(size, size, size));
 
         size = defaultSize;
@@ -133,8 +122,8 @@ public class ShapeSpawner
     {
         return size;
     }
-    public float GetRange()
+    public float GetPower()
     {
-        return range;
+        return power;
     }
 }

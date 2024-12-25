@@ -19,7 +19,7 @@ public class UI : MonoBehaviour
         if (shapeSpawner != null)
         {
             sizeText.text = ((int)(shapeSpawner.GetSize() * 10)).ToString();
-            rangeText.text = ((int)shapeSpawner.GetRange()).ToString() + "m";
+            rangeText.text = ((int)shapeSpawner.GetPower()).ToString();
         }
 
     }
