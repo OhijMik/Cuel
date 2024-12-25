@@ -9,7 +9,7 @@ public class Shape : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.velocity = (transform.position - Camera.main.transform.position) * 2;
-        transform.position = Camera.main.transform.position;
+        transform.position = Camera.main.transform.position + Camera.main.transform.forward;
     }
 
     private void Update()
