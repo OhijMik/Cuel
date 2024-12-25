@@ -13,8 +13,8 @@ public class ShapeSpawnerFactory
             float sizeMax = 10f;
             float sizeIncrement = 0.05f;
 
-            float power = 5f;
-            float powerMax = 10f;
+            float power = 2f;
+            float powerMax = 3f;
             float powerMin = 1f;
             return new CubeSpawner(avatar, spawner, shapeIndex, size, sizeMax, sizeIncrement, power,
                                     powerMax, powerMin);
@@ -25,9 +25,9 @@ public class ShapeSpawnerFactory
             float sizeMax = 10f;
             float sizeIncrement = 0.05f;
 
-            float power = 5f;
-            float powerMax = 25f;
-            float powerMin = 1f;
+            float power = 4f;
+            float powerMax = 6f;
+            float powerMin = 3f;
             return new BallSpawner(avatar, spawner, shapeIndex, size, sizeMax, sizeIncrement, power,
                                     powerMax, powerMin);
         }
@@ -37,9 +37,9 @@ public class ShapeSpawnerFactory
             float sizeMax = 10f;
             float sizeIncrement = 0.05f;
 
-            float power = 5f;
-            float powerMax = 10f;
-            float powerMin = 1f;
+            float power = 10f;
+            float powerMax = 15f;
+            float powerMin = 8f;
             return new TriangleSpawner(avatar, spawner, shapeIndex, size, sizeMax, sizeIncrement, power,
                                     powerMax, powerMin);
         }
