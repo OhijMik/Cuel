@@ -5,6 +5,8 @@ using UnityEngine;
 public class Shape : MonoBehaviour
 {
     private new Rigidbody rigidbody;
+    [SerializeField] private float health = 10;
+
     private void Start()
     {
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();

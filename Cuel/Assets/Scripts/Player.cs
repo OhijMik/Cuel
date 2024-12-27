@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject tempTriangleInstantiate;
     private GameObject tempShape;
 
+    public float health = 100f;
+
     private void Awake()
     {
         avatar = GetComponent<Alteruna.Avatar>();
