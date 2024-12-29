@@ -5,7 +5,8 @@ using UnityEngine;
 public class Shape : MonoBehaviour
 {
     private new Rigidbody rigidbody;
-    [SerializeField] private float health = 10;
+    [SerializeField] private float health = 10f;
+    [SerializeField] private float damage = 10f;
 
     private void Start()
     {
@@ -20,5 +21,14 @@ public class Shape : MonoBehaviour
     private void Update()
     {
         rigidbody.mass = transform.localScale.x;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            Player player = col.gameObject.GetComponent<Player>();
+            player.Hit(damage);
+        }
     }
 }

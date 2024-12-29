@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject tempTriangleInstantiate;
     private GameObject tempShape;
 
-    public float health = 100f;
+    private float health = 100f;
 
     private void Awake()
     {
@@ -39,6 +39,11 @@ public class Player : MonoBehaviour
         if (!avatar.IsMe)
         {
             return;
+        }
+
+        if (health <= 0)
+        {
+            Debug.Log("Dead");
         }
 
         // Change the current shape spawner
@@ -87,5 +92,15 @@ public class Player : MonoBehaviour
             return null;
         }
         return avatar;
+    }
+
+    public float GetHealth()
+    {
+        return health;
+    }
+
+    public void Hit(float damage)
+    {
+        health -= damage;
     }
 }

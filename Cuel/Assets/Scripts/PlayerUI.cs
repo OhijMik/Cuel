@@ -24,6 +24,6 @@ public class UI : MonoBehaviour
             rangeText.text = ((int)shapeSpawner.GetPower()).ToString();
         }
 
-        healthText.text = ((int)player.health).ToString();
+        healthText.text = ((int)player.GetHealth()).ToString();
     }
 }
