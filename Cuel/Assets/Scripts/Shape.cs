@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Shape : MonoBehaviour
 {
-    private new Rigidbody rigidbody;
-    private Player player;
     [SerializeField] private float damage = 10f;
 
-    private void OnTriggerEnter(Collider col)
+    private void OnCollisionEnter(Collision col)
     {
-        Debug.Log("dgasui");
         if (col.gameObject.tag == "Player")
         {
+            Debug.Log("dgasui");
             Player player = col.gameObject.GetComponent<Player>();
             player.Hit(damage);
         }
