@@ -23,11 +23,15 @@ public class ObjectSpawner : MonoBehaviour
     {
         Player player = multiplayer.GetAvatar(user.Name).GetComponent<Player>();
 
+        if (player.GetSpawner() == null)
+        {
+            return;
+        }
         float power = player.GetSpawner().GetPower();
 
         Rigidbody rigidbody = shape.GetComponent<Rigidbody>();
         rigidbody.velocity = (shape.transform.position - Camera.main.transform.position) * power;
-        transform.position = Camera.main.transform.position + Camera.main.transform.forward;
+        shape.transform.position = Camera.main.transform.position + Camera.main.transform.forward;
 
         rigidbody.mass = transform.localScale.x;
     }
