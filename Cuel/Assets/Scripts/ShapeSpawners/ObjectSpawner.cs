@@ -34,5 +34,7 @@ public class ObjectSpawner : MonoBehaviour
         shape.transform.position = Camera.main.transform.position + Camera.main.transform.forward;
 
         rigidbody.mass = transform.localScale.x;
+
+        shape.GetComponent<Shape>().SetPlayer(player);
     }
 }
