@@ -12,11 +12,14 @@ public class UI : MonoBehaviour
 
     private void Update()
     {
+        Alteruna.Avatar avatar = GetComponent<Alteruna.Avatar>();
         Player player = GetComponent<Player>();
-        if (player.GetAvatar() == null || !player.GetAvatar().IsMe)
+
+        if (!avatar.IsMe)
         {
             return;
         }
+
         shapeSpawner = player.GetSpawner();
         if (shapeSpawner != null)
         {
@@ -24,6 +27,6 @@ public class UI : MonoBehaviour
             rangeText.text = ((int)shapeSpawner.GetPower()).ToString();
         }
 
-        healthText.text = ((int)player.GetHealth()).ToString();
+        healthText.SetText(((int)player.GetHealth()).ToString());
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Alteruna;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -74,6 +75,9 @@ public class Player : MonoBehaviour
             // Update the current spawner
             currShapeSpawner.UpdateSpawner(tempShape);
         }
+
+        float size = 0.25f + (float)(health / 100 * 0.75);
+        transform.localScale = new Vector3(size, size, size);
     }
 
     public ShapeSpawner GetSpawner()
