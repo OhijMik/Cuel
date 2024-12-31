@@ -15,6 +15,8 @@ public class UI : MonoBehaviour
         Alteruna.Avatar avatar = GetComponent<Alteruna.Avatar>();
         Player player = GetComponent<Player>();
 
+        healthText.text = ((int)player.GetHealth()).ToString();
+
         if (!avatar.IsMe)
         {
             return;
@@ -27,6 +29,6 @@ public class UI : MonoBehaviour
             rangeText.text = ((int)shapeSpawner.GetPower()).ToString();
         }
 
-        healthText.SetText(((int)player.GetHealth()).ToString());
+
     }
 }
