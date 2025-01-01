@@ -12,7 +12,6 @@ public class Shape : MonoBehaviour
     {
         if (col.gameObject.tag == "Player" && !hit && col.gameObject.GetComponent<Player>() != player)
         {
-            Debug.Log("hit");
             Player player = col.gameObject.GetComponent<Player>();
             player.Hit(damage);
             hit = true;
