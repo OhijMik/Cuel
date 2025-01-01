@@ -22,7 +22,7 @@ public class ShapeSpawnerFactory
         else if (shapeIndex == 1)       // Create ball spawner
         {
             float size = 0.5f;
-            float sizeMax = 10f;
+            float sizeMax = 6f;
             float sizeIncrement = 0.05f;
 
             float power = 4f;
@@ -34,7 +34,7 @@ public class ShapeSpawnerFactory
         else if (shapeIndex == 2)       // Create triangle spawner
         {
             float size = 0.5f;
-            float sizeMax = 10f;
+            float sizeMax = 3;
             float sizeIncrement = 0.05f;
 
             float power = 10f;

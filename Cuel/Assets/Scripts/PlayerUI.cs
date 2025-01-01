@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI sizeText;
+    [SerializeField] private GameObject sizeBar;
+    [SerializeField] private Scrollbar scrollbar;
     [SerializeField] private TextMeshProUGUI rangeText;
     private ShapeSpawner shapeSpawner;
 
@@ -22,10 +24,10 @@ public class UI : MonoBehaviour
         shapeSpawner = player.GetSpawner();
         if (shapeSpawner != null)
         {
-            sizeText.text = ((int)(shapeSpawner.GetSize() * 10)).ToString();
+            // scrollbar.size = (int)(shapeSpawner.GetSize() / shapeSpawner.GetSizeMax() * 300) - 10;
+            scrollbar.value = shapeSpawner.GetSize() / shapeSpawner.GetSizeMax();
+            Debug.Log(scrollbar.size);
             rangeText.text = ((int)shapeSpawner.GetPower()).ToString();
         }
-
-
     }
 }

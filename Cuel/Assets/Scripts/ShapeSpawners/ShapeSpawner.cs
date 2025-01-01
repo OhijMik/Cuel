@@ -123,6 +123,12 @@ public class ShapeSpawner
     {
         return size;
     }
+
+    public float GetSizeMax()
+    {
+        return sizeMax;
+    }
+
     public float GetPower()
     {
         return power;
