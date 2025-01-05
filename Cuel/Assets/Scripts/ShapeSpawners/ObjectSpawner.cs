@@ -35,6 +35,6 @@ public class ObjectSpawner : MonoBehaviour
 
         rigidbody.mass = transform.localScale.x;
 
-        shape.GetComponent<Shape>().SetPlayer(player);
+        shape.GetComponent<Shape>().SetOwner(player);
     }
 }
