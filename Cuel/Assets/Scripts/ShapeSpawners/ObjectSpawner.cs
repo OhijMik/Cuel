@@ -31,9 +31,9 @@ public class ObjectSpawner : MonoBehaviour
 
         Rigidbody rigidbody = shape.GetComponent<Rigidbody>();
         rigidbody.velocity = (shape.transform.position - Camera.main.transform.position) * power;
-        shape.transform.position = Camera.main.transform.position + Camera.main.transform.forward;
+        shape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * shape.transform.localScale.x;
 
-        rigidbody.mass = transform.localScale.x;
+        rigidbody.mass = shape.transform.localScale.x;
 
         shape.GetComponent<Shape>().SetOwner(player);
     }

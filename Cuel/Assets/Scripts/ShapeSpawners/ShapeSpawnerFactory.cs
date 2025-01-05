@@ -10,7 +10,7 @@ public class ShapeSpawnerFactory
         if (shapeIndex == 0)            // Create cube spawner
         {
             float size = 0.5f;
-            float sizeMax = 10f;
+            float sizeMax = 5f;
             float sizeIncrement = 0.05f;
 
             float power = 2f;

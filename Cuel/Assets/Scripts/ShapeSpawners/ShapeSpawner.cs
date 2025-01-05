@@ -86,23 +86,25 @@ public class ShapeSpawner
             return;
         }
 
+        tempShape.transform.localScale = new Vector3(size, size, size);
+        tempShape.transform.rotation = Camera.main.transform.rotation;
+
         // Spawn the temp shape at power or at a solid object
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit,
-            Mathf.Infinity))
+            Mathf.Infinity) && hit.distance < power)
         {
-            if (hit.distance < power)
-            {
-                // Add the temp shape at the hit distance
-                tempShape.transform.localScale = new Vector3(size, size, size);
-                tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * hit.distance * 0.9f;
-                tempShape.transform.rotation = Camera.main.transform.rotation;
-                return;
-            }
+            // Add the temp shape at the hit distance
+            tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * hit.distance * 0.9f;
+            return;
+        }
+        else if ((Camera.main.transform.forward * power).magnitude < size)
+        {
+            // Add the temp shape at the max size distance
+            tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * size;
+            return;
         }
         // Add the temp shape
-        tempShape.transform.localScale = new Vector3(size, size, size);
         tempShape.transform.position = Camera.main.transform.position + Camera.main.transform.forward * power;
-        tempShape.transform.rotation = Camera.main.transform.rotation;
     }
 
     private void SpawnShape()
@@ -111,7 +113,6 @@ public class ShapeSpawner
         {
             return;
         }
-
         // Spawn the shape with power
         spawner.Spawn(indexToSpawn, Camera.main.transform.position + Camera.main.transform.forward * power,
                         Camera.main.transform.rotation, new Vector3(size, size, size));

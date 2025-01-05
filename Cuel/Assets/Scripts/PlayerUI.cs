@@ -26,7 +26,7 @@ public class UI : MonoBehaviour
         {
             // scrollbar.size = (int)(shapeSpawner.GetSize() / shapeSpawner.GetSizeMax() * 300) - 10;
             scrollbar.value = shapeSpawner.GetSize() / shapeSpawner.GetSizeMax();
-            Debug.Log(scrollbar.size);
+            //Debug.Log(scrollbar.size);
             rangeText.text = ((int)shapeSpawner.GetPower()).ToString();
         }
     }
